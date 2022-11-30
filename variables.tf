@@ -27,15 +27,14 @@ variable "number_of_broker_nodes" {
 }
 
 variable "enhanced_monitoring" {
-  description = "Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)"
+  description = "Specify the desired enhanced MSK CloudWatch monitoring level"
   type        = string
   default     = "PER_TOPIC_PER_PARTITION"
 }
 
 variable "broker_node_client_subnets" {
-  description = "A list of subnets to connect to in client VPC ([documentation](https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#clusters-prop-brokernodegroupinfo-clientsubnets))"
+  description = "A list of subnets to connect to in client VPC"
   type        = list(string)
-  default     = ["subnet-025a13e0cd5a72374","subnet-0cadc32aa94d9580b","subnet-0cc9ffdcad17f533f"]
 }
 
 variable "broker_node_ebs_volume_size" {
