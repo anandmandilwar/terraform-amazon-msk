@@ -16,7 +16,11 @@ resource "aws_msk_cluster" "this" {
 
   broker_node_group_info {
     client_subnets  = var.broker_node_client_subnets
-    ebs_volume_size = var.broker_node_ebs_volume_size
+    storage_info {
+      ebs_storage_info {
+        volume_size = var.broker_node_ebs_volume_size
+      }
+    }
     instance_type   = var.broker_node_instance_type
     security_groups = var.broker_node_security_groups
   }
@@ -98,7 +102,7 @@ resource "aws_msk_cluster" "this" {
 
   # required for appautoscaling
   lifecycle {
-    ignore_changes = [broker_node_group_info[0].ebs_volume_size]
+    ignore_changes = [broker_node_group_info[0].storage_info[0].ebs_storage_info[0].volume_size]
   }
 
   tags = var.tags
